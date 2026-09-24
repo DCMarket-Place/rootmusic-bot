@@ -1,0 +1,22 @@
+{
+  "id": "your-music-id",
+  "name": "RootMusic",
+  "version": "1.0.0",
+  "description": "High-fidelity YouTube Music, Queue System and Live Audio Panel for Root communities",
+  "package": {
+    "server": {
+      "launch": "dist/main.js",
+      "deploy": ["dist"],
+      "nodeModules": ["node_modules"]
+    }
+  },
+  "permissions": {
+    "channel": {
+      "createMessage": true,
+      "deleteMessageOther": true,
+      "managePinnedMessages": true,
+      "viewMessageHistory": true,
+      "view": true
+    }
+  }
+}
