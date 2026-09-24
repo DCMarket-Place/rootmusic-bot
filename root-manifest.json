@@ -1,9 +1,12 @@
 {
   "id": "ADF0nxEMgAmD4ypPxQ2Y8w",
   "name": "RootMusic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "High-fidelity YouTube Music, Queue System and Live Audio Panel for Root communities",
   "package": {
+    "client": {
+      "deploy": "client/dist"
+    },
     "server": {
       "launch": "dist/main.js",
       "deploy": ["dist"],
