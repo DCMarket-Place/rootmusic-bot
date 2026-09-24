@@ -41,21 +41,15 @@ export class MusicPanel {
         : 'Off';
 
     return [
-      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-      `🎵 **Root Music — Live Audio Panel**`,
-      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-      `${statusIcon} **[${track.title}](${track.url})**`,
-      `👤 **Requested by:** <@${track.requestedBy}>`,
-      `⏱️ \`${currentFormatted} / ${totalFormatted}\` [${progressBar}] **${percentage}%**`,
-      `🔊 **Volume:** \`${state.volume}%\` | 🔁 **Loop:** \`${loopStatus}\` | 📜 **Queue:** \`${state.queue.length} track(s)\``,
-      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-      `🎛️ **Quick Controls:**`,
-      `  • \`/pause\` / \`/resume\` — Toggle playback`,
-      `  • \`/skip\` — Next track in queue`,
-      `  • \`/loop\` — Toggle loop mode`,
-      `  • \`/queue\` — View upcoming tracks`,
-      `  • \`/stop\` — Stop player and disconnect`,
-      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+      `> ### 🎵 **ROOTMUSIC — LIVE AUDIO PANEL**`,
+      `> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+      `> ${statusIcon} **[${track.title}](${track.url})**`,
+      `> 👤 **Requested by:** [@Member](root://user/${track.requestedBy})`,
+      `> ⏱️ \`${currentFormatted} / ${totalFormatted}\` \`[${progressBar}]\` **${percentage}%**`,
+      `> 🔊 **Volume:** \`${state.volume}%\` ┃ 🔁 **Loop:** \`${loopStatus}\` ┃ 📜 **Queue:** \`${state.queue.length} track(s)\``,
+      `> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+      `> 🎛️ **Quick Controls:** \`/pause\` • \`/resume\` • \`/skip\` • \`/queue\` • \`/stop\``,
+      `> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
     ].join('\n');
   }
 
@@ -75,27 +69,27 @@ export class MusicPanel {
     }
 
     if (state.queue.length === 0) {
-      lines.push('*(No more tracks in queue)*');
+      lines.push('> *(No more tracks in queue)*');
     } else {
       state.queue.slice(0, 10).forEach((t, i) => {
         lines.push(
-          `**${i + 1}.** [${t.title}](${t.url}) — \`${SearchResolver.formatDuration(
+          `> **${i + 1}.** [${t.title}](${t.url}) — \`${SearchResolver.formatDuration(
             t.duration
-          )}\` | <@${t.requestedBy}>`
+          )}\` | [@Member](root://user/${t.requestedBy})`
         );
       });
 
       if (state.queue.length > 10) {
-        lines.push(`*...and ${state.queue.length - 10} more tracks in queue.*`);
+        lines.push(`> *...and ${state.queue.length - 10} more tracks in queue.*`);
       }
     }
 
     return [
-      `📜 **RootMusic — Current Server Queue**`,
-      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+      `> ### 📜 **ROOTMUSIC — CURRENT QUEUE**`,
+      `> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
       ...lines,
-      `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
-      `🔁 Loop: \`${state.loopMode.toUpperCase()}\` | 🔊 Volume: \`${state.volume}%\``,
+      `> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`,
+      `> 🔁 **Loop:** \`${state.loopMode.toUpperCase()}\` ┃ 🔊 **Volume:** \`${state.volume}%\``,
     ].join('\n');
   }
 }
